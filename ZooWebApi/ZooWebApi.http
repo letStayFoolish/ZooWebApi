@@ -1,6 +1,0 @@
-@ZooWebApi_HostAddress = http://localhost:5171
-
-GET {{ZooWebApi_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
