@@ -4,7 +4,7 @@ namespace ZooWebApi.Services.Implementations;
 
 public class FoodService : IFoodService
 {
-    public int GetStock()
+    public int GeFoodStock()
     {
         throw new NotImplementedException();
     }

@@ -9,15 +9,18 @@ namespace ZooWebApi.Controllers;
 public class AnimalController :ControllerBase
 {
     private readonly IAnimalService _animalService;
+    private readonly ILogger<AnimalController> _logger;
     
-    public AnimalController(IAnimalService animalService)
+    public AnimalController(IAnimalService animalService, ILogger<AnimalController> logger)
     {
         _animalService = animalService;
+        _logger = logger;
     }
 
     [HttpGet]
     public IActionResult GetAllAnimals()
     {
+        _logger.LogInformation("Animals requested at {Time}", DateTime.UtcNow);
         return Ok(_animalService.GetAllAnimals());
     }
 
