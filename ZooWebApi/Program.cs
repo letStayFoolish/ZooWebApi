@@ -1,4 +1,5 @@
 using Serilog;
+using ZooWebApi.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +7,9 @@ builder.Services.AddOpenApi();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Add services to the container (DI).
+builder.Services.AddSingleton<IZooRepository, InMemoryZooRepository>();
 
 builder.Host.UseSerilog((context, configuration) =>
 {
