@@ -1,6 +1,8 @@
 using Serilog;
 using System.Text.Json.Serialization;
 using ZooWebApi.Persistence;
+using ZooWebApi.Services.Contracts;
+using ZooWebApi.Services.Implementations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +17,8 @@ builder.Services.AddSwaggerGen();
 
 // Add services to the container (DI).
 builder.Services.AddSingleton<IZooRepository, InMemoryZooRepository>();
+builder.Services.AddScoped<IFoodService, FoodService>();
+builder.Services.AddScoped<IAnimalService, AnimalService>();
 
 builder.Host.UseSerilog((context, configuration) =>
 {
