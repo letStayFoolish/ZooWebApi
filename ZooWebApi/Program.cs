@@ -1,5 +1,6 @@
 using Serilog;
 using System.Text.Json.Serialization;
+using ZooWebApi.Domain.Enumerations;
 using ZooWebApi.Jobs;
 using ZooWebApi.Persistence;
 using ZooWebApi.Services.Contracts;
@@ -23,7 +24,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddHostedService<ZooSimulationWorker>();
 
 // Add services to the container (DI).
-if (zooSettings?.StorageType == "InMemory")
+if (zooSettings?.StorageType == StorageType.InMemory)
 {
     builder.Services.AddSingleton<IZooRepository, InMemoryZooRepository>();
 }
