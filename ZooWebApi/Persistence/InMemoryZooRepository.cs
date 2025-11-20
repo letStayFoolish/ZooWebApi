@@ -14,6 +14,6 @@ public class InMemoryZooRepository : IZooRepository
         new Giraffe { Name = "Giga", Species = "Giraffe", Type = AnimalType.Herbivore },
     };
     
-    public int FoodStock { get; set; } = 300;
+    public double FoodStock { get; set; } = 300.0;
     public int StandardFoodAmount => 10; // in kg.
 }

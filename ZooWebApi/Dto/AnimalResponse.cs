@@ -4,6 +4,7 @@ namespace ZooWebApi.Dto;
 
 public class AnimalResponse
 {
+    public Guid AnimalId { get; set; }
     public string  Name { get; set; }
     public string Species { get; set; }
     public string Type { get; set; }
@@ -16,6 +17,7 @@ public static class AnimalExtensions
     {
         return new AnimalResponse()
         {
+            AnimalId = animal.AnimalId,
             Name = animal.Name,
             Species = animal.Species,
             Type = animal.Type.ToString(),

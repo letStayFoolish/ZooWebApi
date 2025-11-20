@@ -1,3 +1,4 @@
+using ZooWebApi.Domain;
 using ZooWebApi.Domain.Enumerations;
 using ZooWebApi.Dto;
 
@@ -7,4 +8,6 @@ public interface IAnimalService
 {
     public IEnumerable<AnimalResponse> GetAllAnimals();
     IEnumerable<AnimalResponse> GetAnimalsFilteredByType(AnimalType type);
+    void AddAnimal(Animal animal);
+    void RemoveAnimal(Guid animalId);
 }

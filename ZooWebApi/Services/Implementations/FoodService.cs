@@ -1,5 +1,4 @@
 using ZooWebApi.Domain;
-using ZooWebApi.Dto;
 using ZooWebApi.Persistence;
 using ZooWebApi.Services.Contracts;
 
@@ -8,13 +7,15 @@ namespace ZooWebApi.Services.Implementations;
 public class FoodService : IFoodService
 {
     private readonly IZooRepository _zooRepository;
+    private readonly IAnimalService _animalService;
 
-    public FoodService(IZooRepository zooRepository)
+    public FoodService(IZooRepository zooRepository, IAnimalService animalService)
     {
         _zooRepository = zooRepository;
+        _animalService = animalService;
     }
     
-    public int GeFoodStock()
+    public double GeFoodStock()
     {
         return _zooRepository.FoodStock;
     }
@@ -31,11 +32,12 @@ public class FoodService : IFoodService
 
     public bool FeedAnimals()
     {
-        int animalDailyFoodNeeded = default;
+        double animalDailyFoodNeeded = default;
+        var animals = _zooRepository.Animals;
 
-        foreach (Animal animal in _zooRepository.Animals)
+        foreach (Animal animal in animals)
         {
-            int specificAnimalNeed = animal.Consume(_zooRepository.StandardFoodAmount);
+            double specificAnimalNeed = animal.Consume(_zooRepository.StandardFoodAmount);
             animalDailyFoodNeeded += specificAnimalNeed;
         }
 
@@ -46,7 +48,7 @@ public class FoodService : IFoodService
         
         _zooRepository.FoodStock -= animalDailyFoodNeeded;
 
-        foreach (Animal animal in _zooRepository.Animals)
+        foreach (Animal animal in animals)
         {
             animal.Hunger = 0;
         }

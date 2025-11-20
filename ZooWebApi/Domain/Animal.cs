@@ -9,5 +9,5 @@ public abstract class Animal
     public string Species { get; set; }
     public AnimalType Type { get; set; }
     public int Hunger { get; set; } = default;
-    public abstract int Consume(int amount);
+    public abstract double Consume(double amount);
 }

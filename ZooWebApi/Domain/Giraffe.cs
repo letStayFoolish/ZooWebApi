@@ -2,7 +2,7 @@ namespace ZooWebApi.Domain;
 
 public class Giraffe : Herbivore
 {
-    public override int Consume(int amount)
+    public override double Consume(double amount)
     {
         return amount;
     }

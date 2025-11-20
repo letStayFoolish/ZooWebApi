@@ -35,6 +35,7 @@ else
 
 builder.Services.AddScoped<IFoodService, FoodService>();
 builder.Services.AddScoped<IAnimalService, AnimalService>();
+builder.Services.AddScoped<IZooSimulationService, ZooSimulationService>();
 
 builder.Host.UseSerilog((context, configuration) => { configuration.WriteTo.Console(); });
 
