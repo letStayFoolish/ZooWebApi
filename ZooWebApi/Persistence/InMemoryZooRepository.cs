@@ -5,7 +5,6 @@ namespace ZooWebApi.Persistence;
 
 public class InMemoryZooRepository : IZooRepository
 {
-    //TODO: use Dto instead of Domain objects
     public List<Animal> Animals { get; set; } = new()
     {
         new Carnivore { Name = "Black Puma", Species = "Wild Cat", Type = AnimalType.Carnivore },

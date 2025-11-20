@@ -1,7 +1,7 @@
-using ZooWebApi.Domain;
 using ZooWebApi.Domain.Enumerations;
 using ZooWebApi.Persistence;
 using ZooWebApi.Services.Contracts;
+using ZooWebApi.Dto;
 
 namespace ZooWebApi.Services.Implementations;
 
@@ -13,14 +13,16 @@ public class AnimalService : IAnimalService
     {
         _zooRepository = zooRepository;
     }
-    public IEnumerable<Animal> GetAllAnimals()
+    public IEnumerable<AnimalResponse> GetAllAnimals()
     {
-        //TODO: it would be better to return a DTO instead of the domain model
-        return _zooRepository.Animals;
+        return _zooRepository.Animals.Select(a => a.TodAnimalResponse());
     }
 
-    public IEnumerable<Animal> GetAnimalsFilteredByType(AnimalType type)
+    public IEnumerable<AnimalResponse> GetAnimalsFilteredByType(AnimalType type)
     {
-        return _zooRepository.Animals.Where(a => a.Type == type); 
+        return _zooRepository.Animals
+            .Where(a => a.Type == type)
+            .Select(a => a.TodAnimalResponse()); 
     }
 }
+

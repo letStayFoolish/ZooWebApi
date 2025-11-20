@@ -37,6 +37,6 @@ public class FoodController : ControllerBase
     public IActionResult FeedAnimals()
     {
         _logger.LogInformation("Feeding animals at {Time}", DateTime.UtcNow);
-        return Ok(_foodService.FeedAnimals());
+        return Ok(_foodService.FeedAnimals().ToString());
     }
 }
