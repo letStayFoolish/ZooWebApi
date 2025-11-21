@@ -9,7 +9,6 @@ using ZooWebApi.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//TODO: Option Pattern for storage
 builder.Services.AddOptions<ZooSettings>().BindConfiguration(ZooSettings.SectionName)
     .ValidateDataAnnotations() // Checks for [Required], [Range], etc.
     .ValidateOnStart(); // Fails immediately on startup if config is wrong
